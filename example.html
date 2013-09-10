@@ -1,0 +1,197 @@
+<!DOCTYPE html SYSTEM "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>SMART C-CDA: Problems Domain</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet"
+            href="resources/bootstrap/css/bootstrap.css" />
+		<style>
+			.mypopover {}
+		</style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <span class="label label-warning">C-CDA v1.1</span>
+                    <div class="page-header">
+                        <h1> Problems Domain </h1>
+						<h3 class="text-info"> Key Components </h3>
+                    </div>
+					<div class="panel-group" id="accordion">
+					<div class="panel panel-default">
+						<div class="panel-heading">					
+							  <h4 class="panel-title">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+								  Problem Section
+								</a>
+							  </h4>											
+						</div>
+							<div id="collapseOne" class="panel-collapse collapse">
+								 <div class="panel-body">
+								 	<p>Container for information related to the patient's clinical problems. Narrative text is captured within the section and structured data are contained within coded entries.</p>
+								 	<h5 class="example-title"> Example of Problems Section </h5>
+								 	<p>In this example, the Problems Section reflects the patient's problem list with active problems listed separately from historical problems. Coded data representing the problem list entry is referenced in the narrative directly from the entry.</p>
+										<pre>
+<a class="mypopover" href="#" data-toggle="tooltip" title="&lt;component&gt;" data-content="The Problem Section is a component of the structuredBody.">&lt;component&gt;</a>
+	&lt;section&gt;
+		&lt;!--  *** Problems section with entries required *** --&gt;
+		<a class="mypopover" href="#" data-toggle="tooltip" title="&lt;templateId&gt;" data-content="The template Id specifies the CDA template being applied to this section. '2.16.840.1.113883.10.20.22.2.5.1' refers to the 'Problem Section with Entries Required' template in the Consolidated CDA specification.">&lt;templateId root="2.16.840.1.113883.10.20.22.2.5.1"/&gt;</a>
+		&lt;code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+			displayName="PROBLEM LIST"/&gt;
+		&lt;title&gt;PROBLEMS&lt;/title&gt;
+		&lt;text&gt;
+			<a class="mypopover" href="#" data-toggle="tooltip" title="&lt;paragraph&gt;" data-content="This portion of the narrative lists problems actively being tracked.">&lt;paragraph&gt;</a>Active Concerns&lt;/paragraph&gt;
+			&lt;list&gt;
+				&lt;item&gt;Problem #1&lt;list&gt;
+						&lt;item&gt;<a class="mypopover" href="#" data-toggle="tooltip" title="&lt;content&gt;" data-content="The content element captures the referenced data directly embedded within the entry.">&lt;content ID="problem1"&gt;</a>Chest pain&lt;/content&gt;onset Apr 14, 2007&lt;/item&gt;
+						<a class="mypopover" href="#" data-toggle="tooltip" title="&lt;item&gt;" data-content="This problem is part of the same concern being tracked.">&lt;item&gt;</a>&lt;content ID="problem2"&gt;Angina&lt;/content&gt;onset Apr 17, 2007&lt;/item&gt;
+					&lt;/list&gt;
+				&lt;/item&gt;
+			&lt;/list&gt;
+			<a class="mypopover" href="#" data-toggle="tooltip" title="&lt;paragraph&gt;" data-content="This portion of the narrative lists problems which are no longer a concern.">&lt;paragraph&gt;</a>Resolved Concerns&lt;/paragraph&gt;
+			&lt;list&gt;
+				&lt;item&gt;Problem #2&lt;list&gt;
+						&lt;item&gt;&lt;content ID="problem3"&gt;Pneumonia - Left lower lobe&lt;/content&gt;onset Mar 10, 1998; resolution Mar 16, 1998&lt;/item&gt;
+					&lt;/list&gt;
+				&lt;/item&gt;
+			&lt;/list&gt;
+		&lt;/text&gt;
+		&lt;entry typeCode="DRIV"&gt; ...
+	&lt;/section&gt;
+&lt;/component&gt;
+										</pre> 
+								</div>
+							</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+						  <h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+							  Problem Concern Act
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse">
+						  <div class="panel-body">
+						  	<p>Defines business rules constraining the Act Clinical Statement to represent the concern. Related problem observations are nested within the Act wrapper to allow for tracking over time.</p>
+						  	<h5 class="example-title"> Example of Problem Concern Act </h5>
+						  	<p>In this example, the Problem Concern Act contains multiple problem observations related to the same concern being tracked.</p>
+							<pre>&lt;act classCode="ACT" moodCode="EVN"&gt;
+	&lt;!-- Problem concern act template --&gt;
+	&lt;templateId root="2.16.840.1.113883.10.20.22.4.3"/&gt;
+	&lt;id root="ec8a6ff8-ed4b-4f7e-82c3-e98e58b45de7"/&gt;
+	<a class="mypopover" href="#" data-toggle="tooltip" title="&lt;templateId&gt;" data-content="This code will always be 'CONC' (Concern) which is taken from CodeSystem HL7ActClass.">&lt;code code="CONC" codeSystem="2.16.840.1.113883.5.6" displayName="Concern"/&gt;</a>
+	<a class="mypopover" href="#" data-toggle="tooltip" title="&lt;statusCode&gt;" data-content="statusCode value 'active' indicates that the concern is actively being tracked by the provider.">&lt;statusCode code="active"/&gt;</a>
+	&lt;effectiveTime&gt;
+		<a class="mypopover" href="#" data-toggle="tooltip" title="&lt;low value&gt;" data-content="The effectiveTime/low value reflects when the provider began tracking the concern, in this case January 3, 2007.">&lt;low value="20070103"/&gt;</a>
+	&lt;/effectiveTime&gt;
+	&lt;entryRelationship <a class="mypopover" href="#" data-toggle="tooltip" title="&lt;typeCode&gt;" data-content="The typeCode value 'DRIV' indicates that the section narrative is derived from the entry.">&lt;typeCode="DRIV"/&gt;</a>
+		&lt;observation classCode="OBS" moodCode="EVN"&gt;
+			&lt;!-- Problem observation template --&gt;
+			&lt;templateId root="2.16.840.1.113883.10.20.22.4.4"/&gt;
+			...
+		&lt;/observation&gt;
+	&lt;/entryRelationship&gt;
+&lt;/act&gt;</pre>
+						  </div>
+						</div>
+					</div>						                
+					<div class="panel panel-default">		
+						<div class="panel-heading">
+						  <h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+							  Problem Observation 
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse">
+						  <div class="panel-body">
+						  	<p>Defines business rules constraining the Observation Clinical Statement to represent the problem observed. Problem Observations are contained within the Problem Concern Act, which represents the overarching concern being tracked.</p>
+						  	<h5 class="example-title"> Example of Problem Observation </h5>
+						  	<p>In this example, the Problem Observation contains a code representing the problem observed as well as qualifiers to precisely describe the problem.</p>
+<pre>
+&lt;observation classCode="OBS" moodCode="EVN"&gt;
+	&lt;!-- Problem observation template --&gt;
+	&lt;templateId root="2.16.840.1.113883.10.20.22.4.4"/&gt;
+	&lt;id root="ab1791b0-5c71-11db-b0de-0800200c9a66"/&gt;
+	&lt;code code="409586006" codeSystem="2.16.840.1.113883.6.96"
+		displayName="Complaint"/&gt;
+	&lt;text&gt;
+		&lt;reference value="#problem2"/&gt;
+	&lt;/text&gt;
+	&lt;statusCode code="completed"/&gt;
+	&lt;effectiveTime&gt;
+		&lt;low value="20070103"/&gt;
+	&lt;/effectiveTime&gt;
+	&lt;value xsi:type="CD" code="195967001" codeSystem="2.16.840.1.113883.6.96"
+		displayName="Asthma"/&gt;
+	&lt;entryRelationship typeCode="SUBJ"
+		inversionInd="true"&gt;
+		&lt;observation classCode="OBS" moodCode="EVN"&gt;
+			&lt;templateId root="2.16.840.1.113883.10.20.22.4.31"/&gt;
+			&lt;!-- Age observation template --&gt;
+			...
+		&lt;/observation&gt;
+	&lt;/entryRelationship&gt;
+	&lt;entryRelationship typeCode="REFR"&gt;
+		&lt;observation classCode="OBS" moodCode="EVN"&gt;
+			&lt;templateId root="2.16.840.1.113883.10.20.22.4.5"/&gt;
+			&lt;!-- Health status observation template --&gt;
+			...
+		&lt;/observation&gt;
+	&lt;/entryRelationship&gt;
+&lt;/observation&gt;
+</pre>
+						  </div>
+						</div>
+					</div>						
+					<div class="panel panel-default">		
+						<div class="panel-heading">
+						  <h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+							  Problem Status
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseFour" class="panel-collapse collapse">
+						  <div class="panel-body">
+						  	<p>Defines business rules constraining the Observation Clinical Statement to represent the current status of the problem. Problem Status is contained within the Problem Observation to indicate if the problem is active, inactive, or resolved.</p>
+						  	<h5 class="example-title"> Example of Problems Status</h5>
+						  	<p>In this example, the Problem Status indicates that this problem is known to be resolved.</p>
+<pre>
+&lt;observation classCode="OBS" moodCode="EVN"&gt;
+  &lt;!-- Status observation template --&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.6"/&gt;
+  &lt;code code="33999-4" 
+        codeSystem="2.16.840.1.113883.6.1"
+        codeSystemName="LOINC" 
+        displayName="Status"/&gt;
+  &lt;text&gt;
+	   &lt;reference value="#STAT1"/&gt;
+  &lt;/text&gt;
+  &lt;statusCode code="completed"/&gt;
+  &lt;value xsi:type="CD" 
+         code="413322009"
+         codeSystem="2.16.840.1.113883.6.96"
+         codeSystemName="SNOMED CT" 
+         displayName="Resolved"/&gt;
+&lt;/observation&gt;
+</pre>
+						  </div>
+						</div>
+					</div>						
+				</div>
+            </div>
+        </div>
+        <script src="resources/jquery/jquery-2.0.3.js"></script>
+        <script src="resources/bootstrap/js/bootstrap.js"></script>
+        <script src="resources/bootstrap/js/tooltip.js"></script>
+		<script>
+			$(document).ready(function () {
+			  $('.mypopover').popover()
+			});			
+		</script>
+		
+    </body>
+</html>
