@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Demographics Domain Examples -->
+
+<!-- *********** Example 1: Eve Betterhalf *********** -->
+<recordTarget>
+    <patientRole>
+        <id extension="444-22-2222" root="2.16.840.1.113883.4.1"/>
+        <!-- Social Security Number identifies the patient in the extension with SSN OID as the root. -->
+        <addr use="H">
+            <!-- Address use value 'H' indicates that this is the patient's home -->
+            <streetAddressLine>2222 Home Street</streetAddressLine>
+            <city>Beaverton</city>
+            <state>OR</state>
+            <postalCode>97867</postalCode>
+            <country>US</country>
+            <!-- For US addresses, city, state and zip code values are required -->
+        </addr>
+        <telecom value="tel:+1(555)555-1010" use="HP"/>
+        <!-- Telecom use value 'HP' indicates that this is the patient's 'primary home' and where you can reach them after business hours -->
+        
+        <patient>
+            <!-- Common MU Data Set: patient's name -->
+            <!-- The first name element represents what the patient is known as, indicated by the name use value 'L' for 'legal' -->
+            <name use="L">
+                <given>Eve</given>
+                <family qualifier="SP">Betterhalf</family>
+                <!-- Qualifier value 'SP' indicates this is a name assumed from the partner in a marital relationship -->
+            </name>
+            <!-- The second name element represents another name associated with the patient -->
+            <name use="SRCH">
+                <given>Eve</given>
+                <family qualifier="BR">Everywoman</family>
+                <!-- Qualifier value 'BR' indicates this is a name given to the patient at birth (e.g., maiden name) -->
+            </name>
+            
+            <!-- Common MU Data Set: patient's gender -->
+            <administrativeGenderCode code="F" displayName="Female"
+                codeSystem="2.16.840.1.113883.5.1" codeSystemName="AdministrativeGender"/>
+            
+            <!-- Common MU Data Set: patient's date of birth -->
+            <birthTime value="19750501"/>
+            <!-- Date of birth need only be precise to the day -->
+            
+            <maritalStatusCode code="M" displayName="Married" codeSystem="2.16.840.1.113883.5.2"
+                codeSystemName="MaritalStatusCode"/>
+            <religiousAffiliationCode code="1013"
+                displayName="Christian (non-Catholic, non-specific)"
+                codeSystem="2.16.840.1.113883.5.1076" codeSystemName="HL7 Religious Affiliation"/>
+            
+            <!-- Common MU Data Set: patient's race -->
+            <!-- CDC Race and Ethnicity code set contains the five minimum race and ethnicity 
+                categories defined by OMB Standards -->
+            <raceCode code="2106-3" displayName="White" codeSystem="2.16.840.1.113883.6.238"
+                codeSystemName="Race &amp; Ethnicity - CDC"/>
+            <!-- The raceCode extension is only used if raceCode is valued -->
+            <sdtc:raceCode code="2076-8" displayName="Hawaiian or Other Pacific Islander"
+                codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race &amp; Ethnicity - CDC"/>
+            
+            <!-- Common MU Data Set: patient's ethnicity -->
+            <ethnicGroupCode code="2186-5" displayName="Not Hispanic or Latino"
+                codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race &amp; Ethnicity - CDC"/>
+            
+            <!-- Common MU Data Set: patient's preferred language -->
+            <languageCommunication>
+                <languageCode code="eng"/>
+                <!-- "eng" is ISO 639-2 alpha-3 code for "English" -->
+                <modeCode code="ESP" displayName="Expressed spoken"
+                    codeSystem="2.16.840.1.113883.5.60" codeSystemName="LanguageAbilityMode"/>
+                <proficiencyLevelCode code="G" displayName="Good"
+                    codeSystem="2.16.840.1.113883.5.61"
+                    codeSystemName="LanguageAbilityProficiency"/>
+                <preferenceInd value="true"/>
+                <!-- 'True' value indicates that this is the preferred language -->
+            </languageCommunication>
+            
+        </patient>
+    </patientRole>
+</recordTarget>
+
