@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Vital Signs Domain Examples -->
+
+<!-- *********** Example 1: Patient with vitals observed at separate points in time *********** -->
+<component>
+    <section>
+        <!-- Vital Signs section with entries required -->
+        <templateId root="2.16.840.1.113883.10.20.22.2.4.1"/>
+        <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+            displayName="VITAL SIGNS"/>
+        <title>VITAL SIGNS</title>
+        <text>
+            <table border="1" width="100%">
+                <thead>
+                    <tr>
+                        <th align="right">Date / Time: </th>
+                        <th>Sept 10, 2012</th>
+                        <th>Sept 1, 2011</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th align="left">Height</th>
+                        <td>
+                            <content ID="vit1">177 cm</content>
+                        </td>
+                        <td>
+                            <content ID="vit2">177 cm</content>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th align="left">Weight</th>
+                        <td>
+                            <content ID="vit3">86 kg</content>
+                        </td>
+                        <td>
+                            <content ID="vit4">88 kg</content>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th align="left">Blood Pressure</th>
+                        <td>
+                            <content ID="vit5">132/88</content>
+                        </td>
+                        <td>
+                            <content ID="vit6">128/80</content>
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </text>
+        <entry typeCode="DRIV">
+            <organizer classCode="CLUSTER" moodCode="EVN">
+                <!-- ** Vital signs organizer ** -->
+                <templateId root="2.16.840.1.113883.10.20.22.4.26"/>
+                <id root="31b73bd0-cffc-4599-902e-dbe54bc56cb4"/>
+                <code code="46680005" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED -CT" displayName="Vital signs"/>
+                <statusCode code="completed"/>
+                <effectiveTime>
+                    <low value="20120910"/>
+                    <high value="20120910"/>
+                </effectiveTime>
+                <component>
+                    <observation classCode="OBS" moodCode="EVN">
+                        <!-- ** Vital sign observation ** -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                        <id root="ed9589fd-fda0-41f7-a3d0-dc537554f5c2"/>
+                        <code code="8302-2" codeSystem="2.16.840.1.113883.6.1"
+                            codeSystemName="LOINC" displayName="Height"/>
+                        <statusCode code="completed"/>
+                        <effectiveTime value="20120910"/>
+                        <value xsi:type="PQ" value="177" unit="cm"/>
+                        <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83"/>
+                        <author typeCode="AUT">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+                            <time value="201209101145-0800"/>
+                            <assignedAuthor>
+                                <id extension="555555555" root="2.16.840.1.113883.4.6"/>
+                                <code code="207QA0505X" displayName="Adult Medicine"
+                                    codeSystem="2.16.840.1.113883.6.101"
+                                    codeSystemName="NUCC"/>
+                            </assignedAuthor>
+                        </author>
+                    </observation>
+                </component>
+                <component>
+                    <observation classCode="OBS" moodCode="EVN">
+                        <!-- ** Vital sign observation ** -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                        <id root="f4e729e2-a97f-4a7e-8e23-c92f9b6b55cf"/>
+                        <code code="3141-9" codeSystem="2.16.840.1.113883.6.1"
+                            codeSystemName="LOINC"
+                            displayName="Patient Body Weight - Measured"/>
+                        <statusCode code="completed"/>
+                        <effectiveTime value="20120910"/>
+                        <value xsi:type="PQ" value="86" unit="kg"/>
+                        <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83"/>
+                        <author typeCode="AUT">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+                            <time value="201209101145-0800"/>
+                            <assignedAuthor>
+                                <id extension="555555555" root="2.16.840.1.113883.4.6"/>
+                                <code code="207QA0505X" displayName="Adult Medicine"
+                                    codeSystem="2.16.840.1.113883.6.101"
+                                    codeSystemName="NUCC"/>
+                            </assignedAuthor>
+                        </author>
+                    </observation>
+                </component>
+                <component>
+                    <observation classCode="OBS" moodCode="EVN">
+                        <!-- ** Vital sign observation ** -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                        <id root="a0e39c70-9674-4b2a-9837-cdf74200d8d5"/>
+                        <code code="8480-6" codeSystem="2.16.840.1.113883.6.1"
+                            codeSystemName="LOINC" displayName="Intravascular Systolic"/>
+                        <statusCode code="completed"/>
+                        <effectiveTime value="20120910"/>
+                        <value xsi:type="PQ" value="132" unit="mm[Hg]"/>
+                        <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83"/>
+                        <author typeCode="AUT">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+                            <time value="201209101145-0800"/>
+                            <assignedAuthor>
+                                <id extension="555555555" root="2.16.840.1.113883.4.6"/>
+                                <code code="207QA0505X" displayName="Adult Medicine"
+                                    codeSystem="2.16.840.1.113883.6.101"
+                                    codeSystemName="NUCC"/>
+                            </assignedAuthor>
+                        </author>
+                    </observation>
+                </component>
+                <component>
+                    <observation classCode="OBS" moodCode="EVN">
+                        <!-- ** Vital sign observation ** -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                        <id root="1c2748b7-e440-41ba-bc01-dde97d84a036"/>
+                        <code code="8462-4" codeSystem="2.16.840.1.113883.6.1"
+                            codeSystemName="LOINC" displayName="BP Diastolic"/>
+                        <statusCode code="completed"/>
+                        <effectiveTime value="20120910"/>
+                        <value xsi:type="PQ" value="88" unit="mm[Hg]"/>
+                        <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83"/>
+                        <author typeCode="AUT">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+                            <time value="201109010915-0800"/>
+                            <assignedAuthor>
+                                <id extension="555555555" root="2.16.840.1.113883.4.6"/>
+                                <code code="207QA0505X" displayName="Adult Medicine"
+                                    codeSystem="2.16.840.1.113883.6.101"
+                                    codeSystemName="NUCC"/>
+                            </assignedAuthor>
+                        </author>
+                    </observation>
+                </component>
+            </organizer>
+        </entry>
+        <entry typeCode="DRIV">
+            <organizer classCode="CLUSTER" moodCode="EVN">
+                <!-- ** Vital signs organizer ** -->
+                <templateId root="2.16.840.1.113883.10.20.22.4.26"/>
+                <id root="24f6ad18-c512-40fc-82bd-1e131aa9e52b"/>
+                <code code="46680005" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED -CT" displayName="Vital signs"/>
+                <statusCode code="completed"/>
+                <effectiveTime>
+                    <low value="20110901"/>
+                    <high value="20110901"/>
+                </effectiveTime>
+                <component>
+                    <observation classCode="OBS" moodCode="EVN">
+                        <!-- ** Vital sign observation ** -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                        <id root="05c047cd-28c3-41cd-be6c-56f8cc0c3f2f"/>
+                        <code code="8302-2" codeSystem="2.16.840.1.113883.6.1"
+                            codeSystemName="LOINC" displayName="Height"/>
+                        <statusCode code="completed"/>
+                        <effectiveTime value="20110901"/>
+                        <value xsi:type="PQ" value="177" unit="cm"/>
+                        <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83"/>
+                        <author typeCode="AUT">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+                            <time value="201109010915-0800"/>
+                            <assignedAuthor>
+                                <id extension="555555555" root="2.16.840.1.113883.4.6"/>
+                                <code code="207QA0505X" displayName="Adult Medicine"
+                                    codeSystem="2.16.840.1.113883.6.101"
+                                    codeSystemName="NUCC"/>
+                            </assignedAuthor>
+                        </author>
+                    </observation>
+                </component>
+                <component>
+                    <observation classCode="OBS" moodCode="EVN">
+                        <!-- ** Vital sign observation ** -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                        <id root="21b0f3d5-7d07-4f4f-ad7e-c33dc2ca3835"/>
+                        <code code="3141-9" codeSystem="2.16.840.1.113883.6.1"
+                            codeSystemName="LOINC"
+                            displayName="Patient Body Weight - Measured"/>
+                        <statusCode code="completed"/>
+                        <effectiveTime value="20110901"/>
+                        <value xsi:type="PQ" value="88" unit="kg"/>
+                        <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83"/>
+                        <author typeCode="AUT">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+                            <time value="201109010915-0800"/>
+                            <assignedAuthor>
+                                <id extension="555555555" root="2.16.840.1.113883.4.6"/>
+                                <code code="207QA0505X" displayName="Adult Medicine"
+                                    codeSystem="2.16.840.1.113883.6.101"
+                                    codeSystemName="NUCC"/>
+                            </assignedAuthor>
+                        </author>
+                    </observation>
+                </component>
+                <component>
+                    <observation classCode="OBS" moodCode="EVN">
+                        <!-- ** Vital sign observation ** -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                        <id root="b046c35a-59c7-4215-ae09-9a8409a30b21"/>
+                        <code code="8480-6" codeSystem="2.16.840.1.113883.6.1"
+                            codeSystemName="LOINC" displayName="BP Systolic"/>
+                        <statusCode code="completed"/>
+                        <effectiveTime value="20110901"/>
+                        <value xsi:type="PQ" value="128" unit="mm[Hg]"/>
+                        <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83"/>
+                        <author typeCode="AUT">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+                            <time value="201109010915-0800"/>
+                            <assignedAuthor>
+                                <id extension="555555555" root="2.16.840.1.113883.4.6"/>
+                                <code code="207QA0505X" displayName="Adult Medicine"
+                                    codeSystem="2.16.840.1.113883.6.101"
+                                    codeSystemName="NUCC"/>
+                            </assignedAuthor>
+                        </author>
+                    </observation>
+                </component>
+                <component>
+                    <observation classCode="OBS" moodCode="EVN">
+                        <!-- ** Vital sign observation ** -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                        <id root="44f54e66-fb4b-4ee5-9ced-9574ef307a23"/>
+                        <code code="8462-4" codeSystem="2.16.840.1.113883.6.1"
+                            codeSystemName="LOINC" displayName="BP Diastolic"/>
+                        <statusCode code="completed"/>
+                        <effectiveTime value="20110901"/>
+                        <value xsi:type="PQ" value="80" unit="mm[Hg]"/>
+                        <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83"/>
+                        <author typeCode="AUT">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+                            <time value="201109010915-0800"/>
+                            <assignedAuthor>
+                                <id extension="555555555" root="2.16.840.1.113883.4.6"/>
+                                <code code="207QA0505X" displayName="Adult Medicine"
+                                    codeSystem="2.16.840.1.113883.6.101"
+                                    codeSystemName="NUCC"/>
+                            </assignedAuthor>
+                        </author>
+                    </observation>
+                </component>
+            </organizer>
+        </entry>
+    </section>
+</component>
+
+<!-- *********** Example 2: Complete set of vital signs with BMI *********** -->
+
+<component>
+    <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.4.1"/>
+        <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+            displayName="VITAL SIGNS"/>
+        <title>VITAL SIGNS</title>
+        <text>
+            Most recent vital sign observations:
+            <list listType="ordered">
+                <item><content ID="vit1">Height - 165 cm </content></item>
+                <item><content ID="vit2">Weight - 99.79 kg (increased)</content></item>
+                <item><content ID="vit3">BMI - 31.56 kg/m2 (high)</content></item>
+                <item><content ID="vit4">BP Systolic - 175 mm[Hg] (high)</content></item>
+                <item><content ID="vit5">BP Diastolic - 90 mm[Hg] (high)</content></item>
+            </list>
+        </text>
+        <entry>
+            <organizer classCode="CLUSTER" moodCode="EVN">
+                <!-- Vital signs organizer template -->
+                <templateId root="2.16.840.1.113883.10.20.22.4.26"/>
+                <id root="1bbf0204-3c95-4320-b2a2-41f46eb3b8bf"/>
+                <code code="46680005" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED CT" displayName="Vital signs"/>
+                <statusCode code="completed"/>
+                <effectiveTime value="20110916"/>
+                <component>
+                    <observation classCode="OBS" moodCode="EVN">
+                        <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                        <!-- Vital Sign Observation template -->
+                        <id root="2990030c-ca41-4e82-8843-91f292416cd1"/>
+                        <code code="8302-2" codeSystem="2.16.840.1.113883.6.1"
+                            codeSystemName="LOINC" displayName="Height"/>
+                        <text><reference value="#vit1"/></text>
+                        <statusCode code="completed"/>
+                        <effectiveTime value="20110916"/>
+                        <value xsi:type="PQ" value="177.8" unit="cm"/>
+                    </observation>
+                </component>
+                <component>
+                    <observation classCode="OBS" moodCode="EVN">
+                        <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                        <!-- Vital Sign Observation template -->
+                        <id root="126dd0d4-32fc-44a2-99cd-2bffaf0a9b59"/>
+                        <code code="3141-9" codeSystem="2.16.840.1.113883.6.1"
+                            codeSystemName="LOINC" displayName="Weight measured"/>
+                        <text><reference value="#vit2"/></text>
+                        <statusCode code="completed"/>
+                        <effectiveTime value="20110916"/>
+                        <value xsi:type="PQ" value="99.79" unit="kg"/>
+                        <interpretationCode code="U" codeSystem="2.16.840.1.113883.5.83"/>
+                    </observation>
+                </component>
+                <component>
+                    <observation classCode="OBS" moodCode="EVN">
+                        <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                        <!-- Vital Sign Observation template -->
+                        <id root="9fc97294-9f10-4408-b4c3-b957577cdc36"/>
+                        <code code="39156-5" codeSystem="2.16.840.1.113883.6.1"
+                            codeSystemName="LOINC" displayName="BMI"/>
+                        <text><reference value="#vit3"/></text>
+                        <statusCode code="completed"/>
+                        <effectiveTime value="20110916"/>
+                        <value xsi:type="PQ" value="31.56" unit="kg/m2"/>
+                        <interpretationCode code="H" codeSystem="2.16.840.1.113883.5.83"/>
+                    </observation>
+                </component>
+                <component>
+                    <observation classCode="OBS" moodCode="EVN">
+                        <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                        <!-- Vital Sign Observation template -->
+                        <id root="7d32ba05-fef3-41f5-92da-52e0e442c35b"/>
+                        <code code="8480-6" codeSystem="2.16.840.1.113883.6.1"
+                            codeSystemName="LOINC" displayName="BP Systolic"/>
+                        <text><reference value="#vit4"/></text>
+                        <statusCode code="completed"/>
+                        <effectiveTime value="20110916"/>
+                        <value xsi:type="PQ" value="101" unit="mm[Hg]"/>
+                        <interpretationCode code="H" codeSystem="2.16.840.1.113883.5.83"/>
+                    </observation>
+                </component>
+                <component>
+                    <observation classCode="OBS" moodCode="EVN">
+                        <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                        <!-- Vital Sign Observation template -->
+                        <id root="0960058e-dd6c-4c9a-9f83-62404f26da48"/>
+                        <code code="8462-4" codeSystem="2.16.840.1.113883.6.1"
+                            codeSystemName="LOINC" displayName="Diastolic blood pressure"/>
+                        <text>
+                            <reference value="#vit5"/>
+                        </text>
+                        <statusCode code="completed"/>
+                        <effectiveTime value="20110916"/>
+                        <value xsi:type="PQ" value="73" unit="mm[Hg]"/>
+                        <interpretationCode code="H" codeSystem="2.16.840.1.113883.5.83"/>
+                    </observation>
+                </component>
+            </organizer>
+        </entry>
+    </section>
+</component>

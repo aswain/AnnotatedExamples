@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Allergies Domain Examples -->
+
+<!-- *********** Example 1: Patient with vitals observed at separate points in time *********** -->
+<component>
+    <section>
+        <!-- *** Allergies section with entries required *** -->
+        <templateId root="2.16.840.1.113883.10.20.22.2.6.1"/>
+        <code code="48765-2" codeSystem="2.16.840.1.113883.6.1"/>
+        <title>ALLERGIES AND ADVERSE REACTIONS</title>
+        <text>
+            <table border="1" width="100%">
+                <thead>
+                    <tr>
+                        <th>Substance</th>
+                        <th>Reaction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <content ID="substance1">Penicillin</content>
+                        </td>
+                        <td>
+                            <content ID="reaction1">Nausea</content>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <content ID="substance2">Codeine</content>
+                        </td>
+                        <td>
+                            <content ID="reaction2">Wheezing</content>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </text>
+        <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+                <!-- ** Allergy concern act ** -->
+                <templateId root="2.16.840.1.113883.10.20.22.4.30"/>
+                <id root="36e3e930-7b14-11db-9fe1-0800200c9a66"/>
+                <code code="CONC" codeSystem="2.16.840.1.113883.5.6"/>
+                <!-- The statusCode represents the need to continue tracking the allergy -->
+                <!-- This is of ongoing concern to the provider -->
+                <statusCode code="active"/>
+                <effectiveTime>
+                    <!-- The low value represents when the allergy was first recorded in the patient's chart -->
+                    <!-- Concern was documented on May 1, 1998 -->
+                    <low value="199805011145-0800"/>
+                </effectiveTime>
+                <author typeCode="AUT">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+                    <!-- Same as Concern effectiveTime/low -->
+                    <time value="199805011145-0800"/>
+                    <assignedAuthor>
+                        <id extension="555555555" root="2.16.840.1.113883.4.6"/>
+                        <code code="207QA0505X" displayName="Adult Medicine"
+                            codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC"/>
+                    </assignedAuthor>
+                </author>
+                <entryRelationship typeCode="SUBJ" inversionInd="true">
+                    <observation classCode="OBS" moodCode="EVN">
+                        <!-- ** Allergy observation ** -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.7"/>
+                        <id root="4adc1020-7b14-11db-9fe1-0800200c9a66"/>
+                        <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/>
+                        <text>
+                            <reference value="#allergytype1"/>
+                        </text>
+                        <!-- Observation statusCode represents the status of the act of observing -->
+                        <statusCode code="completed"/>
+                        <effectiveTime>
+                            <!-- The low value reflects the date of onset of the allergy -->
+                            <!-- Based on patient symptoms, presumed onset is May 1, 1998 -->
+                            <low value="19980501"/>
+                            <!-- The high value reflects when the allergy was known to be resolved (and will generally be absent) -->
+                        </effectiveTime>
+                        <value xsi:type="CD" code="419199007"
+                            displayName="Allergy to substance"
+                            codeSystem="2.16.840.1.113883.6.96"
+                            codeSystemName="SNOMED CT"/>
+                        <author typeCode="AUT">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+                            <time value="199805011145-0800"/>
+                            <assignedAuthor>
+                                <id extension="222223333" root="2.16.840.1.113883.4.6"/>
+                                <code code="207KA0200X" displayName="Allergy"
+                                    codeSystem="2.16.840.1.113883.6.101"
+                                    codeSystemName="NUCC"/>
+                            </assignedAuthor>
+                        </author>
+                        <participant typeCode="CSM">
+                            <participantRole classCode="MANU">
+                                <playingEntity classCode="MMAT">
+                                    <code code="70618" displayName="Penicillin"
+                                        codeSystem="2.16.840.1.113883.6.88"
+                                        codeSystemName="RxNorm"/>
+                                </playingEntity>
+                            </participantRole>
+                        </participant>
+                        <entryRelationship typeCode="MFST" inversionInd="true">
+                            <observation classCode="OBS" moodCode="EVN">
+                                <!-- ** Reaction observation ** -->
+                                <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+                                <id root="4adc1020-7b14-11db-9fe1-0800200c9a64"/>
+                                <code code="ASSERTION"
+                                    codeSystem="2.16.840.1.113883.5.4"/>
+                                <text>
+                                    <reference value="#reaction1"/>
+                                </text>
+                                <statusCode code="completed"/>
+                                <effectiveTime>
+                                    <low value="200802260805-0800"/>
+                                    <high value="200802281205-0800"/>
+                                </effectiveTime>
+                                <value xsi:type="CD" code="422587007"
+                                    codeSystem="2.16.840.1.113883.6.96"
+                                    displayName="Nausea"/>
+                                <entryRelationship typeCode="SUBJ" inversionInd="true">
+                                    <observation classCode="OBS" moodCode="EVN">
+                                        <!-- ** Severity observation ** -->
+                                        <templateId
+                                            root="2.16.840.1.113883.10.20.22.4.8"/>
+                                        <code code="SEV"
+                                            displayName="Severity Observation"
+                                            codeSystem="2.16.840.1.113883.5.4"
+                                            codeSystemName="ActCode"/>
+                                        <statusCode code="completed"/>
+                                        <value xsi:type="CD" code="255604002"
+                                            displayName="Mild"
+                                            codeSystem="2.16.840.1.113883.6.96"
+                                            codeSystemName="SNOMED CT"/>
+                                    </observation>
+                                </entryRelationship>
+                            </observation>
+                        </entryRelationship>
+                    </observation>
+                </entryRelationship>
+                <entryRelationship typeCode="SUBJ" inversionInd="true">
+                    <observation classCode="OBS" moodCode="EVN">
+                        <!-- ** Severity observation ** -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.8"/>
+                        <code code="SEV" displayName="Severity Observation"
+                            codeSystem="2.16.840.1.113883.5.4" codeSystemName="ActCode"/>
+                        <text>
+                            <reference value="#allergyseverity1"/>
+                        </text>
+                        <statusCode code="completed"/>
+                        <value xsi:type="CD" code="371924009"
+                            displayName="Moderate to severe"
+                            codeSystem="2.16.840.1.113883.6.96"
+                            codeSystemName="SNOMED CT"/>
+                    </observation>
+                </entryRelationship>
+            </act>
+        </entry>
+        <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+                <!-- ** Allergy concern act ** -->
+                <templateId root="2.16.840.1.113883.10.20.22.4.30"/>
+                <id root="b03805bd-2eb6-4ab8-a9ff-473c6653971a"/>
+                <code code="CONC" codeSystem="2.16.840.1.113883.5.6"/>
+                <!-- The statusCode represents the need to continue tracking the allergy -->
+                <!-- This is of ongoing concern to the provider -->
+                <statusCode code="active"/>
+                <effectiveTime>
+                    <!-- The low value represents when the allergy was first recorded in the patient's chart -->
+                    <!-- Concern was documented on May 1, 1998 -->
+                    <low value="199805011145-0800"/>
+                </effectiveTime>
+                <author typeCode="AUT">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+                    <!-- Same as Concern effectiveTime/low -->
+                    <time value="199805011145-0800"/>
+                    <assignedAuthor>
+                        <id extension="555555555" root="2.16.840.1.113883.4.6"/>
+                        <code code="207QA0505X" displayName="Adult Medicine"
+                            codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC"/>
+                    </assignedAuthor>
+                </author>
+                <entryRelationship typeCode="SUBJ" inversionInd="true">
+                    <observation classCode="OBS" moodCode="EVN">
+                        <!-- ** Allergy observation ** -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.7"/>
+                        <id root="901db0f8-9355-4794-81cd-fd951ef07917"/>
+                        <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/>
+                        <text>
+                            <reference value="#allergytype2"/>
+                        </text>
+                        <!-- Observation statusCode represents the status of the act of observing -->
+                        <statusCode code="completed"/>
+                        <effectiveTime>
+                            <!-- The low value reflects the date of onset of the allergy -->
+                            <low nullFlavor="UNK"/>
+                            <!-- The high value reflects when the allergy was known to be resolved (and will generally be absent) -->
+                        </effectiveTime>
+                        <value xsi:type="CD" code="419199007"
+                            displayName="Allergy to substance"
+                            codeSystem="2.16.840.1.113883.6.96"
+                            codeSystemName="SNOMED CT"/>
+                        <author typeCode="AUT">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+                            <time value="201010110915-0800"/>
+                            <assignedAuthor>
+                                <id extension="222223333" root="2.16.840.1.113883.4.6"/>
+                                <code code="207KA0200X" displayName="Allergy"
+                                    codeSystem="2.16.840.1.113883.6.101"
+                                    codeSystemName="NUCC"/>
+                            </assignedAuthor>
+                        </author>
+                        <participant typeCode="CSM">
+                            <participantRole classCode="MANU">
+                                <playingEntity classCode="MMAT">
+                                    <code code="2670" displayName="Codeine"
+                                        codeSystem="2.16.840.1.113883.6.88"
+                                        codeSystemName="RxNorm"/>
+                                </playingEntity>
+                            </participantRole>
+                        </participant>
+                        <entryRelationship typeCode="MFST" inversionInd="true">
+                            <observation classCode="OBS" moodCode="EVN">
+                                <!-- ** Reaction observation ** -->
+                                <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+                                <id root="38c63dea-1a43-4f84-ab71-1ffd04f6a1dd"/>
+                                <code code="ASSERTION"
+                                    codeSystem="2.16.840.1.113883.5.4"/>
+                                <text>
+                                    <reference value="#reaction2"/>
+                                </text>
+                                <statusCode code="completed"/>
+                                <effectiveTime>
+                                    <low nullFlavor="UNK"/>
+                                </effectiveTime>
+                                <value xsi:type="CD" code="56018004"
+                                    displayName="Wheezing"
+                                    codeSystem="2.16.840.1.113883.6.96"
+                                    codeSystemName="SNOMED CT"/>
+                                <entryRelationship typeCode="SUBJ" inversionInd="true">
+                                    <observation classCode="OBS" moodCode="EVN">
+                                        <!-- ** Severity observation ** -->
+                                        <templateId
+                                            root="2.16.840.1.113883.10.20.22.4.8"/>
+                                        <code code="SEV"
+                                            displayName="Severity Observation"
+                                            codeSystem="2.16.840.1.113883.5.4"
+                                            codeSystemName="ActCode"/>
+                                        <text>
+                                            <reference value="#reactionseverity2"/>
+                                        </text>
+                                        <statusCode code="completed"/>
+                                        <value xsi:type="CD" code="6736007"
+                                            displayName="Moderate"
+                                            codeSystem="2.16.840.1.113883.6.96"
+                                            codeSystemName="SNOMED CT"/>
+                                    </observation>
+                                </entryRelationship>
+                            </observation>
+                        </entryRelationship>
+                        <entryRelationship typeCode="SUBJ" inversionInd="true">
+                            <observation classCode="OBS" moodCode="EVN">
+                                <!-- ** Severity observation ** -->
+                                <templateId root="2.16.840.1.113883.10.20.22.4.8"/>
+                                <code code="SEV" displayName="Severity Observation"
+                                    codeSystem="2.16.840.1.113883.5.4"
+                                    codeSystemName="ActCode"/>
+                                <text>
+                                    <reference value="#allergyseverity2"/>
+                                </text>
+                                <statusCode code="completed"/>
+                                <value xsi:type="CD" code="255604002" displayName="Mild"
+                                    codeSystem="2.16.840.1.113883.6.96"
+                                    codeSystemName="SNOMED CT"/>
+                            </observation>
+                        </entryRelationship>
+                    </observation>
+                </entryRelationship>
+            </act>
+        </entry>
+    </section>
+</component>

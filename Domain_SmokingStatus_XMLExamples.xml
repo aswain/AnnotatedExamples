@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Smoking Status Domain Examples -->
+
+<!-- *********** Example 1: Patient is a former smoker *********** -->
+<component>
+    <section>
+        <!--  ** Social history section ** -->
+        <templateId root="2.16.840.1.113883.10.20.22.2.17"/>
+        <code code="29762-2" codeSystem="2.16.840.1.113883.6.1"
+            displayName="Social History"/>
+        <title>SOCIAL HISTORY</title>
+        <text>
+            <table border="1" width="100%">
+                <thead>
+                    <tr>
+                        <th>Social History Observation</th>
+                        <th>Description</th>
+                        <th>Dates Observed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Current Smoking Status</td>
+                        <td>Former smoker</td>
+                        <td>September 10, 2012</td>
+                    </tr>
+                    <tr>
+                        <td>Tobacco Use</td>
+                        <td>Moderate cigarette smoker, 10-19/day</td>
+                        <td>February, 2009 - February, 2011</td>
+                    </tr>
+                </tbody>
+            </table>
+        </text>
+        <entry typeCode="DRIV">
+            <observation classCode="OBS" moodCode="EVN">
+                <!-- ** Current smoking status observation ** -->
+                <templateId root="2.16.840.1.113883.10.20.22.4.78"/>
+                <code code="229819007" codeSystem="2.16.840.1.113883.6.96"
+                    displayName="Tobacco use and exposure"/>
+                <statusCode code="completed"/>
+                <!-- The effectiveTime reflects when the current smoking status was observed. -->
+                <effectiveTime value="20120910"/>
+                <!-- The value represents the patient's smoking status currently observed. -->
+                <value xsi:type="CD" code="8517006" displayName="Former smoker"
+                    codeSystem="2.16.840.1.113883.6.96"/>
+                <author typeCode="AUT">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+                    <time value="201209101145-0800"/>
+                    <assignedAuthor>
+                        <id extension="555555555" root="2.16.840.1.113883.4.6"/>
+                        <code code="207QA0505X" displayName="Adult Medicine"
+                            codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC"/>
+                    </assignedAuthor>
+                </author>
+            </observation>
+        </entry>
+        <entry typeCode="DRIV">
+            <observation classCode="OBS" moodCode="EVN">
+                <!-- ** Tobacco use ** -->
+                <templateId root="2.16.840.1.113883.10.20.22.4.85"/>
+                <id root="45efb604-7049-4a2e-ad33-d38556c9636c"/>
+                <code code="229819007" codeSystem="2.16.840.1.113883.6.96"
+                    displayName="Tobacco use and exposure"/>
+                <statusCode code="completed"/>
+                <effectiveTime>
+                    <!-- The low value reflects the start date of the observation/value (moderate smoker) -->
+                    <low value="20090214"/>
+                    <!-- The high value reflects the end date of the observation/value (moderate smoker) -->
+                    <high value="20110215"/>
+                </effectiveTime>
+                <value xsi:type="CD" code="160604004"
+                    displayName="Moderate cigarette smoker, 10-19/day"
+                    codeSystem="2.16.840.1.113883.6.96"/>
+                <author typeCode="AUT">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+                    <time value="201209101145-0800"/>
+                    <assignedAuthor>
+                        <id extension="555555555" root="2.16.840.1.113883.4.6"/>
+                        <code code="207QA0505X" displayName="Adult Medicine"
+                            codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC"/>
+                    </assignedAuthor>
+                </author>
+            </observation>
+        </entry>
+    </section>
+</component>
+        
+        
+<!-- *********** Example 2: Patient's current smoking status is unknown *********** -->
+<component>
+    <section>
+        <!--  ** Social history section ** -->
+        <templateId root="2.16.840.1.113883.10.20.22.2.17"/>
+        <code code="29762-2" codeSystem="2.16.840.1.113883.6.1"
+            displayName="Social History"/>
+        <title>SOCIAL HISTORY</title>
+        <text>
+            <table border="1" width="100%">
+                <thead>
+                    <tr>
+                        <th>Social History Observation</th>
+                        <th>Description</th>
+                        <th>Dates Observed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Current Smoking Status</td>
+                        <td>Unknown if ever smoked</td>
+                        <td>September 10, 2012</td>
+                    </tr>
+                </tbody>
+            </table>
+        </text>
+        
+        <entry typeCode="DRIV">
+            <observation classCode="OBS" moodCode="EVN">
+                <!-- ** Current smoking status observation ** -->
+                <templateId root="2.16.840.1.113883.10.20.22.4.78"/>
+                <code code="229819007" codeSystem="2.16.840.1.113883.6.96"
+                    displayName="Tobacco use and exposure"/>
+                <statusCode code="completed"/>
+                <!-- The effectiveTime reflects when the current smoking status was observed. -->
+                <effectiveTime value="20120910"/>
+                <!-- The value represents the patient's smoking status currently observed. -->
+                <value xsi:type="CD" code="266927001" displayName="Unknown if ever smoked"
+                    codeSystem="2.16.840.1.113883.6.96"/>
+                <author>
+                    <time value="201209101145-0800"/>
+                    <assignedAuthor>
+                        <id extension="555555555" root="2.16.840.1.113883.4.6"/>
+                    </assignedAuthor>
+                </author>
+            </observation>
+        </entry>
+    </section>
+</component>

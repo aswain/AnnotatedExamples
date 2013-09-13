@@ -5,7 +5,7 @@
 <recordTarget>
     <patientRole>
         <id extension="444-22-2222" root="2.16.840.1.113883.4.1"/>
-        <!-- Social Security Number identifies the patient in the extension with SSN OID as the root. -->
+        <!-- Social Security Number identifies the patient in the extension with SSN OID as the root -->
         <addr use="H">
             <!-- Address use value 'H' indicates that this is the patient's home -->
             <streetAddressLine>2222 Home Street</streetAddressLine>
@@ -16,7 +16,7 @@
             <!-- For US addresses, city, state and zip code values are required -->
         </addr>
         <telecom value="tel:+1(555)555-1010" use="HP"/>
-        <!-- Telecom use value 'HP' indicates that this is the patient's 'primary home' and where you can reach them after business hours -->
+        <!-- Telecom use value 'HP' indicates that this is the patient's 'primary home' and where they can be reached after business hours -->
         
         <patient>
             <!-- Common MU Data Set: patient's name -->
@@ -28,6 +28,7 @@
             </name>
             <!-- The second name element represents another name associated with the patient -->
             <name use="SRCH">
+                <!-- Name use value 'SRCH' indicates this is a name intended to be used in searching or matching -->
                 <given>Eve</given>
                 <family qualifier="BR">Everywoman</family>
                 <!-- Qualifier value 'BR' indicates this is a name given to the patient at birth (e.g., maiden name) -->
@@ -41,26 +42,31 @@
             <birthTime value="19750501"/>
             <!-- Date of birth need only be precise to the day -->
             
-            <maritalStatusCode code="M" displayName="Married" codeSystem="2.16.840.1.113883.5.2"
+            <maritalStatusCode code="S" displayName="Never Married" codeSystem="2.16.840.1.113883.5.2"
                 codeSystemName="MaritalStatusCode"/>
             <religiousAffiliationCode code="1013"
                 displayName="Christian (non-Catholic, non-specific)"
                 codeSystem="2.16.840.1.113883.5.1076" codeSystemName="HL7 Religious Affiliation"/>
             
-            <!-- Common MU Data Set: patient's race -->
-            <!-- CDC Race and Ethnicity code set contains the five minimum race and ethnicity 
-                categories defined by OMB Standards -->
+            <!-- Common MU Data Set: patient's race; 
+                vocab requirement: OMB Standards for Maintaining, Collecting, and Presenting Federal Data on Race and Ethnicity, 
+                Statistical Policy Directive No. 15, as revised, October 30, 1997-->
             <raceCode code="2106-3" displayName="White" codeSystem="2.16.840.1.113883.6.238"
                 codeSystemName="Race &amp; Ethnicity - CDC"/>
-            <!-- The raceCode extension is only used if raceCode is valued -->
+            <!-- CDC Race and Ethnicity value set contains the five minimum race and ethnicity 
+                categories defined by OMB Standards -->
+            <!-- The raceCode extension (sdtc:raceCode) is only used if the raceCode element is valued -->
             <sdtc:raceCode code="2076-8" displayName="Hawaiian or Other Pacific Islander"
                 codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race &amp; Ethnicity - CDC"/>
             
-            <!-- Common MU Data Set: patient's ethnicity -->
+            <!-- Common MU Data Set: patient's ethnicity; 
+                vocab requirement: OMB Standards for Maintaining, Collecting, and Presenting Federal Data on Race and Ethnicity, 
+                Statistical Policy Directive No. 15, as revised, October 30, 1997 -->
             <ethnicGroupCode code="2186-5" displayName="Not Hispanic or Latino"
                 codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race &amp; Ethnicity - CDC"/>
             
-            <!-- Common MU Data Set: patient's preferred language -->
+            <!-- Common MU Data Set: patient's preferred language; 
+                vocab requirement: ISO 639-2 alpha-3 codes limited to those that also have a corresponding alpha-2 code in ISO 639-1 -->
             <languageCommunication>
                 <languageCode code="eng"/>
                 <!-- "eng" is ISO 639-2 alpha-3 code for "English" -->
@@ -70,7 +76,7 @@
                     codeSystem="2.16.840.1.113883.5.61"
                     codeSystemName="LanguageAbilityProficiency"/>
                 <preferenceInd value="true"/>
-                <!-- 'True' value indicates that this is the preferred language -->
+                <!-- 'True' value indicates that this is the patient's preferred language -->
             </languageCommunication>
             
         </patient>
