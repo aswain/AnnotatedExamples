@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Problems Domain Examples -->
+
+<!-- *********** Example 1: Patient with condition tracked over time *********** -->
+<component>
+    <section>
+        <!-- Problems section with entries required template -->
+        <templateId root="2.16.840.1.113883.10.20.22.2.5.1"/>
+        <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+            displayName="PROBLEM LIST"/>
+        <title>PROBLEMS</title>
+        <text>
+            <!-- This portion of the narrative lists problems actively being tracked -->
+            <paragraph>Active Concerns</paragraph>
+            <list>
+                <item>Problem #1<list>
+                    <item>
+                        <item>
+                            <content ID="problem1">Acne</content> (onset Apr 14, 2010) [authored Apr 14, 2010]
+                            <!-- The content element captures the referenced data directly embedded within the entry -->
+                        </item>
+                        <item>
+                            <content ID="problem2">Irregular periods</content> (onset Apr 14, 2010) [authored Apr 14, 2010]
+                        </item>
+                        <item>
+                            <content ID="problem3">Polycystic ovaries</content> (onset May 7, 2010) [authored May 7, 2010]
+                        </item>
+                    </item>
+                </list>
+                </item>
+            </list>
+            <!-- This portion of the narrative lists problems which are no longer being tracked -->
+            <paragraph>Resolved Concerns</paragraph>
+            <list>
+                <item>Problem #2<list>
+                    <item>
+                        <content ID="problem4">Pneumonia</content> Left lower lobe (onset Mar 10, 2012; resolution Mar 16, 2012) [authored Mar 16, 2012]
+                    </item>
+                </list>
+                </item>
+            </list>
+        </text>
+        
+        <!-- The problem concern act contains nested clinical statements associated with the concern -->
+        <entry typeCode="DRIV">
+            <!-- Entry typeCode value 'DRIV' indicates that section narrative is derived from the entry -->
+            <act classCode="ACT" moodCode="EVN">
+                <!-- Problem concern act template -->
+                <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+                <id root="19a611b9-5cae-4a95-ab9c-7f6aa0459942"/>
+                <code code="CONC" codeSystem="2.16.840.1.113883.5.6"
+                    displayName="Concern"/>
+                <!-- The statusCode represents the need to continue tracking the problem -->
+                <statusCode code="active"/>
+                <!-- 'Active' indicates that this is of ongoing concern to the provider -->
+                <effectiveTime>
+                    <!-- The low value represents when the problem was first recorded in the patient's chart -->
+                    <low value="201004141515-0800"/>
+                    <!-- Concern was documented on Apr 14, 2010 -->
+                </effectiveTime>
+                <!-- This author participant indicates the provider who recorded the concern -->
+                <author>
+                    <!-- The author time is the same as when the problem was first recorded in the patient's chart -->
+                    <time value="201004141515-0800"/>
+                    <assignedAuthor>
+                        <id extension="222334444" root="2.16.840.1.113883.4.6"/>
+                        <!-- This ID points back to a provider described in the header -->
+                    </assignedAuthor>
+                </author>
+                
+                <!-- The entryRelationship typeCode describes the relationship between the problem concern and the nested problem observation -->
+                <entryRelationship typeCode="SUBJ">
+                    <!-- 'SUBJ' indicates that the problem concern is the outer element and the problem observation is the inner element -->
+                    <observation classCode="OBS" moodCode="EVN">
+                        <!-- Problem observation template -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                        <id root="1b83dec5-0a12-4831-b10f-126df6f86b0a"/>
+                        <code code="404684003" codeSystem="2.16.840.1.113883.6.96"
+                            displayName="Finding"/>
+                        <!-- The text reference points back to the narrative -->
+                        <text>
+                            <reference value="#problem1"/>
+                        </text>
+                        <!-- The statusCode reflects the status of the observation itself -->
+                        <statusCode code="completed"/>
+                        <effectiveTime>
+                            <!-- The low value reflects the date of onset -->
+                            <low value="20100414"/>
+                            <!-- Based on patient symptoms, presumed onset is April 14, 2010 -->
+                            <!-- Absence of effectiveTime/high means the condition is not resolved -->
+                        </effectiveTime>
+                        <!-- Common MU Data Set: problems; 
+                            vocab requirement: IHTSDO SNOMED CT® International Release July 2012 and US Extension to SNOMED CT® March 2012 Release -->
+                        <value xsi:type="CD" code="80182007"
+                            codeSystem="2.16.840.1.113883.6.96" displayName="Irregular periods"/>
+                        <!-- This author participant indicates the provider who made the observation -->
+                        <author>
+                            <time value="201004141515-0800"/>
+                            <assignedAuthor>
+                                <id extension="222334444" root="2.16.840.1.113883.4.6"/>
+                                <!-- This ID points back to a provider described in the header -->
+                            </assignedAuthor>
+                        </author>
+                    </observation>
+                </entryRelationship>
+                
+                <!-- The entryRelationship typeCode describes the relationship between the problem concern and the nested problem observation -->
+                <entryRelationship typeCode="SUBJ">
+                    <!-- 'SUBJ' indicates that the problem concern is the outer element and the problem observation is the inner element -->
+                    <observation classCode="OBS" moodCode="EVN">
+                        <!-- Problem observation template -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                        <id root="d5cf3f7e-f671-4ed0-8d7a-1a3ec1d8121b"/>
+                        <code code="64572001" codeSystem="2.16.840.1.113883.6.96"
+                            displayName="Condition"/>
+                        <!-- The text reference points back to the narrative -->
+                        <text>
+                            <reference value="#problem2"/>
+                        </text>
+                        <!-- The statusCode reflects the status of the observation itself -->
+                        <statusCode code="completed"/>
+                        <effectiveTime>
+                            <!-- The low value reflects the date of onset -->
+                            <low value="20100414"/>
+                            <!-- Based on patient symptoms, presumed onset is April 14, 2010 -->
+                            <!-- Absence of effectiveTime/high means the condition is not resolved -->
+                        </effectiveTime>
+                        <!-- Common MU Data Set: problems; 
+                            vocab requirement: IHTSDO SNOMED CT® International Release July 2012 and US Extension to SNOMED CT® March 2012 Release -->
+                        <value xsi:type="CD" code="11381005"
+                            codeSystem="2.16.840.1.113883.6.96" displayName="Acne"/>
+                        <!-- This author participant indicates the provider who made the observation -->
+                        <author>
+                            <time value="201004141515-0800"/>
+                            <assignedAuthor>
+                                <id extension="222334444" root="2.16.840.1.113883.4.6"/>
+                                <!-- This ID points back to a provider described in the header -->
+                            </assignedAuthor>
+                        </author>
+                    </observation>
+                </entryRelationship>
+                
+                <!-- The entryRelationship typeCode describes the relationship between the problem concern and the nested problem observation -->
+                <entryRelationship typeCode="SUBJ">
+                    <!-- 'SUBJ' indicates that the problem concern is the outer element and the problem observation is the inner element -->
+                    <observation classCode="OBS" moodCode="EVN">
+                        <!-- Problem observation template -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                        <id root="bbfc2680-c5ed-4bc7-886e-5e4bb060896a"/>
+                        <code code="64572001" codeSystem="2.16.840.1.113883.6.96"
+                            displayName="Condition"/>
+                        <!-- The text reference points back to the narrative -->
+                        <text>
+                            <reference value="#problem3"/>
+                        </text>
+                        <!-- The statusCode reflects the status of the observation itself -->
+                        <statusCode code="completed"/>
+                        <effectiveTime>
+                            <!-- The low value reflects the date of onset -->
+                            <low value="20100507"/>
+                            <!-- Absence of effectiveTime/high means the condition is not resolved -->
+                        </effectiveTime>
+                        <!-- Common MU Data Set: problems; 
+                            vocab requirement: IHTSDO SNOMED CT® International Release July 2012 and US Extension to SNOMED CT® March 2012 Release -->
+                        <value xsi:type="CD" code="69878008"
+                            codeSystem="2.16.840.1.113883.6.96" displayName="Polycystic ovaries"/>
+                        <!-- This author participant indicates the provider who made the observation -->
+                        <author>
+                            <time value="201005071515-0800"/>
+                            <assignedAuthor>
+                                <id extension="222334444" root="2.16.840.1.113883.4.6"/>
+                                <!-- This ID points back to a provider described in the header -->
+                            </assignedAuthor>
+                        </author>
+                    </observation>
+                </entryRelationship>
+            </act>
+        </entry>
+        
+        <!-- The problem concern act contains nested clinical statements associated with the concern -->
+        <entry typeCode="DRIV">
+            <!-- Entry typeCode value 'DRIV' indicates that section narrative is derived from the entry -->
+            <act classCode="ACT" moodCode="EVN">
+                <!-- Problem concern act template -->
+                <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+                <id root="cb3759bf-d20a-476b-9ff8-cfad366d5567"/>
+                <code code="CONC" codeSystem="2.16.840.1.113883.5.6"
+                    displayName="Concern"/>
+                <!-- The statusCode represents the need to continue tracking the problem -->
+                <statusCode code="completed"/>
+                <!-- 'Completed' indicates that this is no longer an ongoing concern to the provider -->
+                <effectiveTime>
+                    <!-- The low value represents when the problem was first recorded in the patient's chart -->
+                    <low value="20120310"/>
+                    <!-- The high value reflects when there was no longer a need to track the problem -->
+                    <high value="20120504"/>
+                </effectiveTime>
+                <!-- This author participant indicates the provider who recorded the concern -->
+                <author>
+                    <!-- The author time is the same as when the problem was first recorded in the patient's chart -->
+                    <time value="201203101030-0800"/>
+                    <assignedAuthor>
+                        <id extension="222334444" root="2.16.840.1.113883.4.6"/>
+                        <!-- This ID points back to a provider described in the header -->
+                    </assignedAuthor>
+                </author>
+                
+                <!-- The entryRelationship typeCode describes the relationship between the problem concern and the nested problem observation -->
+                <entryRelationship typeCode="SUBJ">
+                    <!-- 'SUBJ' indicates that the problem concern is the outer element and the problem observation is the inner element -->
+                    <observation classCode="OBS" moodCode="EVN">
+                        <!-- Problem observation template -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                        <id root="10506b4d-c30a-4220-8bec-97bff9568fd1"/>
+                        <code code="64572001" codeSystem="2.16.840.1.113883.6.96"
+                            displayName="Condition"/>
+                        <!-- The text reference points back to the narrative -->
+                        <text>
+                            <reference value="#problem4"/>
+                        </text>
+                        <!-- The statusCode reflects the status of the observation itself -->
+                        <statusCode code="completed"/>
+                        <effectiveTime>
+                            <!-- The low value reflects the date of onset -->
+                            <!-- Based on patient symptoms, presumed onset is Mar 10, 2012 -->
+                            <low value="20120310"/>
+                            <!-- The high value reflects when the problem was known to be resolved -->
+                            <high value="20120316"/>
+                        </effectiveTime>
+                        <!-- Common MU Data Set: problems; 
+                            vocab requirement: IHTSDO SNOMED CT® International Release July 2012 and US Extension to SNOMED CT® March 2012 Release -->
+                        <value xsi:type="CD" code="233604007"
+                            codeSystem="2.16.840.1.113883.6.96" displayName="Pneumonia">
+                            <!-- The value qualifier further describes the observation value -->
+                            <qualifier>
+                                <name code="363698007" displayName="Finding site"/>
+                                <!-- The qualifier specifies a location -->
+                                <value code="41224006"
+                                    displayName="Left lower lobe of lung"/>
+                                <!-- The pneumonia is affecting the left lower lobe of the lung -->
+                            </qualifier>
+                        </value>
+                        <!-- This author participant indicates the provider who made the observation -->
+                        <author>
+                            <time value="201203161030-0800"/>
+                            <assignedAuthor>
+                                <id extension="555555555" root="2.16.840.1.113883.4.6"/>
+                            </assignedAuthor>
+                        </author>
+                    </observation>
+                </entryRelationship>
+            </act>
+        </entry>
+    </section>
+</component>
+
+<!-- *********** Example 2: Patient with no known problems *********** -->
+<component>
+    <section>
+        <!-- Problems section with entries required template -->
+        <templateId root="2.16.840.1.113883.10.20.22.2.5.1"/>
+        <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+            displayName="PROBLEM LIST"/>
+        <title>PROBLEMS</title>
+        <text>
+            <paragraph>No known problems</paragraph>
+        </text>
+        
+        <entry>
+            <act classCode="ACT" moodCode="EVN">
+                <!-- Problem concern act template -->
+                <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+                <id root="3ceea4b4-fd23-4146-ae2b-04b44902a6b1"/>
+                <code code="CONC" codeSystem="2.16.840.1.113883.5.6"
+                    displayName="Concern"/>
+                <statusCode code="completed"/> 
+                <effectiveTime>
+                    <!-- The low value represents when the concern was first recorded in the patient's chart -->
+                    <low value="20130703"/> 
+                </effectiveTime>
+                <author>
+                    <!-- The author time is the same as when the concern was first recorded in the patient's chart -->
+                    <time value="201307031030-0800"/> 
+                    <assignedAuthor>
+                        <id extension="555555555" root="1.1.1.1.1.1.1.2"/>
+                    </assignedAuthor>
+                </author>
+                
+                <entryRelationship typeCode="SUBJ">
+                    <!-- negationInd is used to signal the absence of a problem -->
+                    <observation classCode="OBS" moodCode="EVN" negationInd="true"> 
+                        <!-- Problem observation template -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.4.2"/>
+                        <id root="91c6e5e9-c66a-4b88-a270-9e1deef75fc4"/>
+                        <code code="64572001" codeSystem="2.16.840.1.113883.6.96"
+                            displayName="Condition"/>
+                        <statusCode code="completed"/>
+                        <!-- The effectiveTime indicates the time period when no problem has been observed -->
+                        <effectiveTime>
+                            <low value="20130703"/> 
+                            <!-- Absence of high value indicates that a problem is not known currently -->
+                        </effectiveTime>
+                        <!-- Common MU Data Set: problems; 
+                            vocab requirement: IHTSDO SNOMED CT® International Release July 2012 and US Extension to SNOMED CT® March 2012 Release -->
+                        <value xsi:type="CD" code="64572001" codeSystem="2.16.840.1.113883.6.96" displayName="Disease (disorder)"/>
+                        <author>
+                            <time value="201307031030-0800"/>
+                            <assignedAuthor>
+                                <id extension="555555555" root="1.1.1.1.1.1.1.2"/>
+                            </assignedAuthor>
+                        </author>
+                    </observation>
+                </entryRelationship>
+            </act>
+        </entry>
+    </section>
+</component>
+
+
+<!-- *********** Example 3: Patient has had sinusitis in the past, but is known to have no problems currently *********** -->
+<component>
+    <section>
+        <!-- Problems section with entries required template -->
+        <templateId root="2.16.840.1.113883.10.20.22.2.5.1"/>
+        <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+            displayName="PROBLEM LIST"/>
+        <title>PROBLEMS</title>
+        <text>
+            <paragraph>No known problems currently. Sinus infection in June 2011. </paragraph>
+        </text>
+        
+        <entry>
+            <act classCode="ACT" moodCode="EVN">
+                <!-- Problem concern act template -->
+                <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+                <id root="87dfd1ec-b162-40cd-9c88-44fd604c6688"/>
+                <code code="CONC" codeSystem="2.16.840.1.113883.5.6"
+                    displayName="Concern"/>
+                <statusCode code="completed"/> 
+                <effectiveTime>
+                    <!-- The low value represents when the concern was first recorded in the patient's chart -->
+                    <low value="20130703"/> 
+                </effectiveTime>
+                <author>
+                    <!-- The author time is the same as when the concern was first recorded in the patient's chart -->
+                    <time value="201302231030-0800"/> 
+                    <assignedAuthor>
+                        <id extension="555555555" root="1.1.1.1.1.1.1.2"/>
+                    </assignedAuthor>
+                </author>
+                
+                <entryRelationship typeCode="SUBJ">
+                    <!-- negationInd is used to signal the absence of a problem -->
+                    <observation classCode="OBS" moodCode="EVN" negationInd="true"> 
+                        <!-- Problem observation template -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.4.2"/>
+                        <id root="5ca91303-e21f-438b-bf45-ff1d044ff8ff"/>
+                        <code code="64572001" codeSystem="2.16.840.1.113883.6.96"
+                            displayName="Condition"/>
+                        <statusCode code="completed"/>
+                        <!-- The effectiveTime indicates the time period when no problem has been observed -->
+                        <effectiveTime>
+                            <low value="20130223"/> 
+                            <!-- Absence of high value indicates that a problem is not known currently -->
+                        </effectiveTime>
+                        <!-- Common MU Data Set: problems; 
+                            vocab requirement: IHTSDO SNOMED CT® International Release July 2012 and US Extension to SNOMED CT® March 2012 Release -->
+                        <value xsi:type="CD" code="64572001" codeSystem="2.16.840.1.113883.6.96" displayName="Disease (disorder)"/>
+                        <author>
+                            <time value="201302231030-0800"/>
+                            <assignedAuthor>
+                                <id extension="555555555" root="1.1.1.1.1.1.1.2"/>
+                            </assignedAuthor>
+                        </author>
+                    </observation>
+                </entryRelationship>
+            </act>
+        </entry>
+        
+        <!-- The problem concern act contains nested clinical statements associated with the concern -->
+        <entry>
+            <act classCode="ACT" moodCode="EVN">
+                <!-- Problem concern act template -->
+                <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+                <id root="2b7cc5c5-8667-4697-99dd-03838435f2b7"/>
+                <code code="CONC" codeSystem="2.16.840.1.113883.5.6"
+                    displayName="Concern"/>
+                <!-- The statusCode represents the need to continue tracking the problem -->
+                <statusCode code="completed"/>
+                <!-- 'Completed' indicates that this is no longer an ongoing concern to the provider -->
+                <effectiveTime>
+                    <!-- The low value represents when the problem was first recorded in the patient's chart -->
+                    <low value="20110610"/>
+                    <!-- The high value reflects when there was no longer a need to track the problem -->
+                    <high value="20111006"/>
+                </effectiveTime>
+                <!-- This author participant indicates the provider who recorded the concern -->
+                <author>
+                    <!-- The author time is the same as when the problem was first recorded in the patient's chart -->
+                    <time value="201106101045-0800"/>
+                    <assignedAuthor>
+                        <id extension="222334444" root="2.16.840.1.113883.4.6"/>
+                        <!-- This ID points back to a provider described in the header -->
+                    </assignedAuthor>
+                </author>
+                
+                <!-- The entryRelationship typeCode describes the relationship between the problem concern and the nested problem observation -->
+                <entryRelationship typeCode="SUBJ">
+                    <!-- 'SUBJ' indicates that the problem concern is the outer element and the problem observation is the inner element -->
+                    <observation classCode="OBS" moodCode="EVN">
+                        <!-- Problem observation template -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                        <id root="cf3605ac-01f2-4488-a7db-e8e8983e5bf2"/>
+                        <code code="64572001" codeSystem="2.16.840.1.113883.6.96"
+                            displayName="Condition"/>
+                        <!-- The statusCode reflects the status of the observation itself -->
+                        <statusCode code="completed"/>
+                        <effectiveTime>
+                            <!-- The low value reflects the date of onset -->
+                            <!-- Based on patient symptoms, presumed onset is June 10, 2011 -->
+                            <low value="20110610"/>
+                            <!-- The high value reflects when the problem was known to be resolved -->
+                            <high value="20110716"/>
+                        </effectiveTime>
+                        <!-- Common MU Data Set: problems; 
+                            vocab requirement: IHTSDO SNOMED CT® International Release July 2012 and US Extension to SNOMED CT® March 2012 Release -->
+                        <value xsi:type="CD" code="15805002"
+                            codeSystem="2.16.840.1.113883.6.96" displayName="Acute sinusitis">
+                            <!-- The translation contains an alternate code for the observation value -->
+                            <translation code="J01.90" displayName="Acute Sinusitis, unspecified" codeSystemName="ICD-10-CM" codeSystem="2.16.840.1.113883.6.13"/>
+                        </value>
+                        <!-- This author participant indicates the provider who made the observation -->
+                        <author>
+                            <time value="201107161035-0800"/>
+                            <assignedAuthor>
+                                <id extension="555555555" root="2.16.840.1.113883.4.6"/>
+                            </assignedAuthor>
+                        </author>
+                    </observation>
+                </entryRelationship>
+            </act>
+        </entry>
+    </section>
+</component>
