@@ -83,3 +83,50 @@
     </patientRole>
 </recordTarget>
 
+<!-- *********** Example 2: Unconscious patient *********** -->
+<recordTarget>
+    <patientRole>
+        <!-- The extension is patient-specific whereas the root is organization-specific -->
+        <id nullFlavor="UNK"/>
+        <!-- 'UNK' indicates that a value is applicable, but not known -->
+        <addr>
+            <streetAddressLine nullFlavor="UNK"/>
+            <city nullFlavor="UNK"/>
+            <state nullFlavor="UNK"/>
+            <postalCode>97812</postalCode>
+            <country>US</country>
+        </addr>
+        <telecom nullFlavor="UNK"/>
+        
+        <patient>
+            <!-- Common MU Data Set: patient's name -->
+            <name>
+                <given nullFlavor="UNK"/>
+                <family nullFlavor="UNK"/>
+            </name>
+            
+            <!-- Common MU Data Set: patient's gender -->
+            <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" displayName="Male"/>
+            
+            <!-- Common MU Data Set: patient's date of birth -->
+            <birthTime nullFlavor="UNK"/>
+            
+            <!-- Common MU Data Set: patient's race; 
+                vocab requirement: OMB Standards for Maintaining, Collecting, and Presenting Federal Data on Race and Ethnicity, 
+                Statistical Policy Directive No. 15, as revised, October 30, 1997-->
+            <raceCode nullFlavor="UNK"/>
+            
+            <!-- Common MU Data Set: patient's ethnicity; 
+                vocab requirement: OMB Standards for Maintaining, Collecting, and Presenting Federal Data on Race and Ethnicity, 
+                Statistical Policy Directive No. 15, as revised, October 30, 1997 -->
+            <ethnicGroupCode nullFlavor="UNK"/>
+            
+            <!-- Common MU Data Set: patient's preferred language; 
+                vocab requirement: ISO 639-2 alpha-3 codes limited to those that also have a corresponding alpha-2 code in ISO 639-1 -->
+            <languageCommunication>
+                <languageCode nullFlavor="UNK"/>
+            </languageCommunication>
+            
+        </patient>
+    </patientRole>
+</recordTarget>
