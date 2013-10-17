@@ -286,8 +286,10 @@
                     </assignedAuthor>
                 </author>
                 
+                <!-- The entryRelationship typeCode describes the relationship between the problem concern and the nested problem observation -->
                 <entryRelationship typeCode="SUBJ">
-                    <!-- negationInd is used to signal the absence of a problem -->
+                    <!-- 'SUBJ' indicates that the problem concern is the outer element and the problem observation is the inner element -->
+                    <!-- negationInd is used to signal that the entry value is not true (no problem) -->
                     <observation classCode="OBS" moodCode="EVN" negationInd="true"> 
                         <!-- Problem observation template -->
                         <templateId root="2.16.840.1.113883.10.20.22.4.4.2"/>
@@ -316,8 +318,75 @@
     </section>
 </component>
 
+<!-- *********** Example 3: Provider does not know if the patient has any problems *********** -->
+<component>
+    <section>
+        <!-- Problems section with entries required template -->
+        <templateId root="2.16.840.1.113883.10.20.22.2.5.1"/>
+        <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+            displayName="PROBLEM LIST"/>
+        <title>PROBLEMS</title>
+        <text>
+            <paragraph>Unaware of any problems</paragraph>
+        </text>
+        
+        <entry>
+            <act classCode="ACT" moodCode="EVN">
+                <!-- Problem concern act template -->
+                <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+                <id root="3ceea4b4-fd23-4146-ae2b-04b44902a6b1"/>
+                <code code="CONC" codeSystem="2.16.840.1.113883.5.6"
+                    displayName="Concern"/>
+                <statusCode nullFlavor="NI"/>
+                <!-- There is no information for the status of a concern -->
+                <effectiveTime>
+                    <!-- The low value represents when the provider recorded that they were unaware of a concern -->
+                    <low value="20130812"/> 
+                </effectiveTime>
+                <!-- This author participant represents the provider that recorded they were unaware of a concern -->
+                <author>
+                    <time value="201308121335-0800"/> 
+                    <assignedAuthor>
+                        <id extension="555555555" root="1.1.1.1.1.1.1.2"/>
+                    </assignedAuthor>
+                </author>
+                
+                <!-- The entryRelationship typeCode describes the relationship between the problem concern and the nested problem observation -->
+                <entryRelationship typeCode="SUBJ">
+                    <!-- 'SUBJ' indicates that the problem concern is the outer element and the problem observation is the inner element -->
+                    <observation classCode="OBS" moodCode="EVN"> 
+                        <!-- Problem observation template -->
+                        <templateId root="2.16.840.1.113883.10.20.22.4.4.2"/>
+                        <id root="91c6e5e9-c66a-4b88-a270-9e1deef75fc4"/>
+                        <code nullFlavor="NI"/>
+                        <!-- There is no information for a problem type in the observation code -->
+                        <!-- The statusCode reflects the status of the observation itself -->
+                        <statusCode code="completed"/>
+                        <!-- 'Completed' indicates that no problem information has been observed -->
+                        <effectiveTime>
+                            <low nullFlavor="NI"/> 
+                            <!-- There is no information to indicate the onset date -->
+                        </effectiveTime>
+                        <!-- Common MU Data Set: problems; 
+                            vocab requirement: IHTSDO SNOMED CT® International Release July 2012 and US Extension to SNOMED CT® March 2012 Release -->
+                        <value nullFlavor="NI"/>
+                        <!-- There is no information for a problem -->
+                        <!-- This author participant represents the provider that recorded they were unaware of a problem -->
+                        <author>
+                            <time value="201308121335-0800"/>
+                            <assignedAuthor>
+                                <id extension="555555555" root="1.1.1.1.1.1.1.2"/>
+                            </assignedAuthor>
+                        </author>
+                    </observation>
+                </entryRelationship>
+            </act>
+        </entry>
+    </section>
+</component>
 
-<!-- *********** Example 3: Patient has had sinusitis in the past, but is known to have no problems currently *********** -->
+
+<!-- *********** Example 4: Patient has had sinusitis in the past, but is known to have no problems currently *********** -->
 <component>
     <section>
         <!-- Problems section with entries required template -->

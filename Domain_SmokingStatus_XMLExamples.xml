@@ -78,9 +78,9 @@
                 
                 <!-- The tobacco use was observed from Feb 2009-Feb 2011 -->
                 <effectiveTime>
-                    <!-- The low value reflects the start date of the observation -->
+                    <!-- The low value reflects the start date of the tobacco use -->
                     <low value="20090214"/>
-                    <!-- The high value reflects the end date of the observation -->
+                    <!-- The high value reflects the end date of the tobacco use -->
                     <high value="20110215"/>
                 </effectiveTime>
                 
@@ -142,9 +142,9 @@
                 
                 <!-- The effectiveTime reflects the time period for the smoking habit observed -->
                 <effectiveTime>
-                    <!-- The low value represents when the smoking status was known to start -->
+                    <!-- The low value represents when the observation was known to begin -->
                     <low value="20120910"/>
-                    <!-- The high value is omitted when the smoking status is an on-going observation -->
+                    <!-- The high value is omitted when the observation is on-going -->
                 </effectiveTime>
                 
                 <!-- Common MU Data Set: smoking status; 
